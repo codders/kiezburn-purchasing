@@ -42,13 +42,36 @@
           <v-flex xs12 md6>
             <h2>Add Receipt</h2>
             <v-text-field
-              @keyup.enter="addItem"
-              name="item"
-              label="Add New Item"
-              id="item"
-              v-model="item"
+              name="team"
+              label="Select Team"
+              id="team"
+              v-model="team"
             ></v-text-field>
-            <v-btn @click="addItem">Add Item</v-btn>
+            <v-text-field
+              name="amount"
+              label="Refundable Amount"
+              id="amount"
+              v-model="amount"
+            ></v-text-field>
+            <v-text-field
+              name="description"
+              label="Purchase Description"
+              id="description"
+              v-model="description"
+              multi-line
+            ></v-text-field>
+            <v-text-field
+              name="comments"
+              label="Additional Comments"
+              id="comments"
+              v-model="comments"
+              multi-line
+            ></v-text-field>
+            <div>
+              <input type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
+              <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
+            </div>
+            <v-btn @click="addReceipt">Add Receipt</v-btn>
           </v-flex>
         </v-layout>
 
@@ -56,20 +79,29 @@
 </template>
 
 <script>
-import {DB} from '@/services/fireinit.js'
+import {auth,DB,Store} from '@/services/fireinit.js'
 
 export default {
   asyncData({store}) {
     return {
       receiptsRef: DB.ref(`users/${store.state.user.uid}/receipts`),
-      propertiesRef: DB.ref(`users/${store.state.user.uid}/properties`)
+      propertiesRef: DB.ref(`users/${store.state.user.uid}/properties`),
+      photosRef: DB.ref(`users/${store.state.user.uid}/photos`)
     }
   },
   data () {
     return {
-      item: '',
+      progressUpload: 0,
+      file: File,
+      uploadTask: '',
+      downloadURL: '',
+      team: '',
+      amount: '',
+      description: '',
+      comments: '',
       receipts: {},
-      properties: {}
+      properties: {},
+      attachments: []
     }
   },
   created () {
@@ -80,27 +112,46 @@ export default {
     vm.propertiesRef.on('value', function(snapshot) {
       vm.properties = snapshot.val();
     });
+    vm.team = vm.amount = vm.description = vm.comments = '';
   },
   methods: {
-    addItem () {
-      this.itemsRef.push({
-        name: this.item
+    addReceipt () {
+      if (!(this.team != '' && this.amount != '' && this.description != '' && this.attachments.length > 0)) {
+        console.log("Not filing empty receipt");
+        return;
+      }
+      this.receiptsRef.push({
+        team: this.team,
+        amount: this.amount,
+        description: this.description,
+        comments: this.comments,
+        attachments: this.attachments
       }).then(() => {
-        this.item = ''
+        this.team = this.amount = this.description = this.comments = '';
+        this.attachments = [];
       })
     },
-    deleteItem (key) {
-      this.itemsRef.child(key).remove()
+    detectFiles (fileList) {
+      Array.from(Array(fileList.length).keys()).map( x => {
+        this.upload(fileList[x])
+      })
     },
-    addProperty () {
-      if (this.propertyName != '') {
-        if (this.propertyValue == '') {
-          this.propertiesRef.child(this.propertyName).remove();
-        } else {
-          this.propertiesRef.child(this.propertyName).set(this.propertyValue);
-        }
-        this.propertyValue = '';
-      }
+    upload (file) {
+      let vm = this;
+      vm.photosRef.push().then(ref => {
+        vm.uploadTask = Store.ref(`users/${auth.currentUser.uid}/photos/${ref.key}`).put(file);
+        vm.uploadTask.then(snapshot => {
+           ref.set({ downloadURL: snapshot.downloadURL });
+           vm.attachments.push(ref.key);
+          })
+      }); 
+    }
+  },
+  watch: {
+    uploadTask: function() {
+      this.uploadTask.on('state_changed', sp => {
+        this.progressUpload = Math.floor(sp.bytesTransferred / sp.totalBytes * 100)
+      })
     }
   }
 }
@@ -119,6 +170,9 @@ export default {
 }
 #purchasingChild {
   margin-top: 1em;
+}
+.progress-bar {
+  margin: 10px 0;
 }
 </style>
 <!--  -->

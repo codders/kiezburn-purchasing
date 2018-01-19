@@ -6,15 +6,15 @@
 
 You will need to install node (~> 8.0) to run and develop with nuxt.
 
-```
-  npm install firebase-tools
-```
+You will also need to configure a new Firebase project to host and run this application if you have not already done so. Create a project with Google Firebase, and copy the config details for the Web application to the config section of `services/firebase.js`
+
+Enable Google Auth in the Firebase Dev Authentication Console to permit users to login with their Google accounts. You will also need to enable Storage and Hosting for the application, so that we can store receipts and host the app in the cloud.
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-$ npm install # Or yarn install
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
@@ -52,11 +52,12 @@ You can then deploy your site with
   firebase deploy
 ```
 
+or alternatively
+
+```
+  npm run fdeploy
+```
+
 == Setup
 
-Create a firebase project
-Add the firebase auth details / config to services/firebase.js
-Enable Google Auth in the Firebase Dev Authentication Console.
 
-Enable Storage for the app
-Enable hosting for the app
