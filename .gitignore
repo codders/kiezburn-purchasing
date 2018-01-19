@@ -1,5 +1,6 @@
 # config
 services/fireinit.js
+.firebaserc
 
 # dependencies
 node_modules
