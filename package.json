@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "nuxt": "^1.0.0",
-    "@nuxtjs/pwa": "^1.0.2",
+    "@nuxtjs/pwa": "^2.0.2",
     "firebase": "^4.5.0",
     "vuetify": "^0.15.7"
   },
