@@ -4,7 +4,7 @@
     <h2 class="subheading">Manage your purchases and receipts here<code>nuxt-child</code></h2>
     <v-flex xs12 id="purchaseNav">
       <nuxt-link class="purchaseNavRoute" to="/purchasing">Dashboard Home</nuxt-link>
-      <nuxt-link class="purchaseNavRoute" to="/purchasing/receipts">Receipts</nuxt-link>
+      <nuxt-link class="purchaseNavRoute" to="/purchasing/addreceipt">Add Receipt</nuxt-link>
       <nuxt-link class="purchaseNavRoute" to="/purchasing/amazon">Amazon</nuxt-link>
     </v-flex>
     <v-divider></v-divider>
