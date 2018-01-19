@@ -142,7 +142,7 @@ export default {
         vm.uploadTask = Store.ref(`users/${auth.currentUser.uid}/photos/${ref.key}`).put(file);
         vm.uploadTask.then(snapshot => {
            ref.set({ downloadURL: snapshot.downloadURL });
-           vm.attachments.push(ref.key);
+           vm.attachments.push({ key: ref.key, downloadURL: snapshot.downloadURL });
           })
       }); 
     }

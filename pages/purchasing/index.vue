@@ -6,7 +6,7 @@
           <h2>Your Receipts</h2>
           <v-list>
             <v-list-tile v-for="(receipt, key) in receipts" :key="key">
-              <v-list-tile-title>{{receipt.description}}</v-list-tile-title>
+              <nuxt-link :to="'/purchasing/receipts/' + key"><v-list-tile-title>{{receipt.description}}</v-list-tile-title></nuxt-link>
               <v-spacer></v-spacer>
               <v-list-tile-title>{{receipt.amount}}</v-list-tile-title>
               <v-spacer></v-spacer>
