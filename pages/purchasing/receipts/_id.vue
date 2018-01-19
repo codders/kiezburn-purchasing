@@ -3,16 +3,12 @@
     <v-layout row wrap>
         <v-flex xs12 md4>
         <h2>Single Receipt</h2>
-        <v-list>
-          <v-list-tile-title>Description: {{receipt.description}}</v-list-tile-title>
+        <p>Description: {{receipt.description}}</p>
+        <p>Amount: {{receipt.amount}}</p>
+        <p class="receipt-photo" v-for="(photo, key) in receipt.attachments" :key="key">
+          <img :src="`${photo.downloadURL}`">
           <v-spacer></v-spacer>
-          <v-list-tile-title>Amount: {{receipt.amount}}</v-list-tile-title>
-          <v-spacer></v-spacer>
-          <v-list-tile v-for="(photo, key) in receipt.attachments" :key="key">
-            <img :src="`${photo.downloadURL}`">
-            <v-spacer></v-spacer>
-          </v-list-tile>
-        </v-list>
+        </p>
       </v-flex>
     </v-layout>
   </section>
@@ -53,6 +49,9 @@ export default {
   max-width: 100px;
 }
 .avatar img {
+  max-width: 100%;
+}
+.receipt-photo img {
   max-width: 100%;
 }
 </style>
