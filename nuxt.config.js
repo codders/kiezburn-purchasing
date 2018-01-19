@@ -10,9 +10,11 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Receipt Processing and Purchasing for KiezBurn' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
+  mode: 'spa',
   /*
   ** Customize the progress bar color
   */
@@ -33,6 +35,25 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
-  }
+    },
+    extractCSS: true,
+    analyze: {
+      analyzerMode: 'static'
+    },
+    vendor: [ 'firebase', 'vuetify' ]
+  },
+  plugins: [
+    {src: '~/plugins/vuetify.js'},
+    '~/plugins/fireauth.js'
+  ],
+  modules: [
+    '@nuxtjs/pwa'
+  ],
+  router: {
+    middleware: 'router-auth'
+  },
+  css: [
+    { src: '~/assets/css/main.css', lang: 'css'},
+    { src: '~/assets/css/app.styl', lang: 'styl'}
+  ]
 }

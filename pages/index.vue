@@ -1,64 +1,61 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        kiezburn-purchasing
-      </h1>
-      <h2 class="subtitle">
-        Receipt Processing and Purchasing for KiezBurn
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <v-container>
+    <v-layout text-xs-center>
+      <v-flex xs12 md8 offset-md2>
+        <div class="wrapper">
+          <div v-if="!$store.state.user">
+            <login-form></login-form>
+            <!-- <v-btn outline large flat nuxt @click="$router.push('/login')" primary>Sign In</v-btn> -->
+          </div>
+          <div v-else class="flexWrapper">
+            <h4 class="blue--text">You're logged in!</h4>
+            <v-btn icon class="blue white--text">
+              <v-icon>thumb_up</v-icon>
+            </v-btn>
+          </div>
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import LoginForm from '~/components/LoginForm'
 
 export default {
-  components: {
-    AppLogo
+components: {
+  LoginForm
   }
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
+<style scoped>
+.fake {
+  background: blue;
+}
+.wrapper {
+  margin-top: -7.5em;
+}
+.flexWrapper {
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
+}
+.container {
+  height: calc(100vh - 100px);
   align-items: center;
-  text-align: center;
+  align-content: center;
+  display: flex;
+  justify-content: center;
 }
-
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+  font-size: 2.5em !important;
+  /*margin-top: -5em;*/
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+@media (min-width: 750px) {
+  .title {
+    font-size: 3.5em !important;
+  }
 }
 </style>

@@ -1,52 +1,137 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <v-app>
+    <v-navigation-drawer
+      persistent
+      app
+      enableResizeWatcher
+      v-model="drawer">
+      <v-list>
+        <v-list-tile
+          router
+          nuxt
+          exact
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+        >
+          <v-list-tile-action>
+            <v-icon v-html="item.icon"></v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="item.title"></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar app fixed>
+      <v-btn
+        icon
+        @click.native.stop="drawer = !drawer">
+        <v-icon>menu</v-icon>
+      </v-btn>
+
+      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <div v-if="user" id="user" class="text-xs-center">
+            <v-menu
+              offset-x
+              :close-on-content-click="false"
+              :nudge-top="200"
+              v-model="menu">
+              <v-btn icon slot="activator"><v-icon medium>settings</v-icon></v-btn>
+                <v-card>
+                  <v-list>
+                    <v-list-tile avatar>
+                      <v-list-tile-avatar>
+                        <img :src="$store.state.user.photoURL" alt="John">
+                      </v-list-tile-avatar>
+                      <v-list-tile-content>
+                        <v-list-tile-title v-if="user.displayName">{{user.displayName}}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+
+                    <v-list-tile>
+                      <v-spacer></v-spacer>
+                      <v-list-tile-action>
+                        <v-btn primary class="mt-2" color="primary" @click.native="logout">
+                          Logout
+                        </v-btn>
+                      </v-list-tile-action>
+                    </v-list-tile>
+                  </v-list>
+                </v-card>
+            </v-menu>
+
+      </div>
+
+    </v-toolbar>
+    <main>
+     <v-container fluid>
+       <nuxt />
+     </v-container>
+   </main>
+    <v-footer :fixed="fixed" app>
+      <span>&copy; Kiez Burn 2018</span>
+    </v-footer>
+  </v-app>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      drawer: true,
+      fixed: false,
+      items: [
+        { icon: 'home', title: 'Welcome', to: '/' },
+        { icon: 'info', title: 'About', to: '/about' },
+        { icon: 'euro_symbol', title: 'Purchasing', to: '/purchasing' },
+        { icon: 'person', title: 'Profile', to: '/profile' },
+        { icon: 'settings', title: 'Admin', to: '/admin' },
+      ],
+      title: 'KiezBurn 2018 Purchasing',
+      menu: false
+    }
+  },
+  computed: {
+    user () {
+      return this.$store.getters.activeUser
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('signOut').then(() => {
+        alert('logged out!')
+        this.$router.push('/')
+      })
+    }
+  }
+ }
+</script>
+
 <style>
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+.navigation-drawer>.list:not(.list--dense) .list__tile {
+  font-size: 17px;
+}
+.avatar {
+  max-width: 75px;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
+.list__tile--active.list__tile.list__tile--link {
+
+}
+a.nuxt-link-exact-active.list__tile--active.list__tile.list__tile--link {
+  font-weight: 900 !important;
+  color: #3f51b5 !important;
+}
+.list__tile--link {
+  border-left: 10px solid transparent;
+}
+.list__tile--link.list__tile--active {
+  color: rgba(0,0,0,.87);
+  border-left: 10px solid gray;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
 </style>
