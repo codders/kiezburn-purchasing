@@ -41,12 +41,13 @@
           </template>
           <v-flex xs12 md6>
             <h2>Add Receipt</h2>
-            <v-text-field
-              name="team"
-              label="Select Team"
-              id="team"
-              v-model="team"
-            ></v-text-field>
+            <p>Area: 
+              <select v-model="area">
+                <option v-for="(areaname, path) in areas" :key="path" v-bind:value="areaname">
+                  {{areaname}}
+                </option>
+              </select>
+            </p>
             <v-text-field
               name="amount"
               label="Refundable Amount"
@@ -80,12 +81,14 @@
 
 <script>
 import {auth,DB,Store} from '@/services/fireinit.js'
+import {DataModel} from '@/util/models.js'
 
 export default {
   asyncData({store}) {
     return {
       receiptsRef: DB.ref(`users/${store.state.user.uid}/receipts`),
-      propertiesRef: DB.ref(`users/${store.state.user.uid}/properties`),
+      profileRef: DB.ref(`users/${store.state.user.uid}/profile`),
+      areasRef: DB.ref(`admin/areas`),
       photosRef: DB.ref(`users/${store.state.user.uid}/photos`)
     }
   },
@@ -95,12 +98,13 @@ export default {
       file: File,
       uploadTask: '',
       downloadURL: '',
-      team: '',
       amount: '',
       description: '',
       comments: '',
       receipts: {},
-      properties: {},
+      profile: {},
+      areas: [],
+      area: '',
       attachments: []
     }
   },
@@ -109,10 +113,16 @@ export default {
     vm.receiptsRef.on('value', function(snapshot) {
       vm.receipts = snapshot.val()
     });
-    vm.propertiesRef.on('value', function(snapshot) {
-      vm.properties = snapshot.val();
+    vm.profileRef.on('value', function(snapshot) {
+      vm.profile = snapshot.val();
+      if (vm.profile != null) {
+        vm.area = vm.profile.area;
+      }
     });
-    vm.team = vm.amount = vm.description = vm.comments = '';
+    vm.areasRef.on('value', function(snapshot) {
+      vm.areas = DataModel.extractAreas(snapshot.val());
+    });
+    vm.amount = vm.description = vm.comments = '';
   },
   methods: {
     addReceipt () {
@@ -121,7 +131,7 @@ export default {
         return;
       }
       this.receiptsRef.push({
-        team: this.team,
+        area: this.area,
         amount: this.amount,
         description: this.description,
         comments: this.comments,
