@@ -66,6 +66,12 @@
   </section>
 </template>
 
+<style>
+select {
+  border: 1px solid black
+}
+</style>
+
 <script>
 import {DB} from '@/services/fireinit.js'
 import {DataModel} from '@/util/models.js'
