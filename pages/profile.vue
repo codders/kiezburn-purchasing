@@ -68,6 +68,7 @@
 
 <script>
 import {DB} from '@/services/fireinit.js'
+import {DataModel} from '@/util/models.js'
 
 export default {
   asyncData({store}) {
@@ -91,12 +92,7 @@ export default {
   created () {
     let vm = this
     vm.areasRef.on('value', function(snapshot) {
-      var subareas = snapshot.val();
-      for (var area in subareas) {
-        for (var i in subareas[area]) {
-          vm.areas.push(area + " - " + subareas[area][i]);
-        }
-      }
+      vm.areas = DataModel.extractAreas(snapshot.val());
     });
     vm.profileRef.on('value', function(snapshot) {
       vm.profile = snapshot.val();
