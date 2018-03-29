@@ -16,6 +16,14 @@
               ></v-text-field>
             </p>
             <p>
+              Default Area:
+              <select v-model="area">
+                <option v-for="(areaname, path) in areas" :key="path" v-bind:value="areaname">
+                  {{areaname}}
+                </option>
+              </select>
+            </p>
+            <p>
               Mobile number:
               <v-text-field
                 name="number"
@@ -64,11 +72,14 @@ import {DB} from '@/services/fireinit.js'
 export default {
   asyncData({store}) {
     return {
-      profileRef: DB.ref(`users/${store.state.user.uid}/profile`)
+      profileRef: DB.ref(`users/${store.state.user.uid}/profile`),
+      areasRef: DB.ref(`admin/areas`)
     }
   },
   data () {
     return {
+      area: '',
+      areas: [],
       name: '',
       number: '',
       email: '',
@@ -79,6 +90,14 @@ export default {
   },
   created () {
     let vm = this
+    vm.areasRef.on('value', function(snapshot) {
+      var subareas = snapshot.val();
+      for (var area in subareas) {
+        for (var i in subareas[area]) {
+          vm.areas.push(area + " - " + subareas[area][i]);
+        }
+      }
+    });
     vm.profileRef.on('value', function(snapshot) {
       vm.profile = snapshot.val();
       vm.name = vm.profile['name'];
@@ -86,6 +105,7 @@ export default {
       vm.email = vm.profile['email'];
       vm.accountname = vm.profile['accountname'];
       vm.iban = vm.profile['iban'];
+      vm.area = vm.profile['area'];
     });
   },
   methods: {
@@ -95,7 +115,8 @@ export default {
         number: this.number,
         email: this.email,
         accountname: this.accountname,
-        iban: this.iban
+        iban: this.iban,
+        area: this.area
       })
     }
   }
