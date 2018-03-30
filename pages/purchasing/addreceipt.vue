@@ -69,7 +69,7 @@
               multi-line
             ></v-text-field>
             <div>
-              <input type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
+              <input id="file-upload-button" type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
               <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
             </div>
             <v-btn @click="addReceipt">Add Receipt</v-btn>
@@ -138,8 +138,9 @@ export default {
         attachments: this.attachments,
         timestamp: Date.now()
       }).then(() => {
-        this.team = this.amount = this.description = this.comments = '';
+        this.amount = this.description = this.comments = '';
         this.attachments = [];
+        document.getElementById("file-upload-button").value = null;
       })
     },
     detectFiles (fileList) {
