@@ -18,6 +18,7 @@
     "firebase": "^4.5.0",
     "firebase-tools": "^3.17.1",
     "nuxt": "^1.0.0",
+    "nuxt-validate": "^0.1.1",
     "vuetify": "^0.15.7"
   },
   "devDependencies": {

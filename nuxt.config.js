@@ -47,7 +47,8 @@ module.exports = {
     '~/plugins/fireauth.js'
   ],
   modules: [
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-validate'
   ],
   router: {
     middleware: 'router-auth'

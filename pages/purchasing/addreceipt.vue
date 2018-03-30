@@ -40,39 +40,49 @@
             <v-spacer></v-spacer>
           </template>
           <v-flex xs12 md6>
-            <h2>Add Receipt</h2>
-            <p>Area: 
-              <select v-model="area">
-                <option v-for="(areaname, path) in areas" :key="path" v-bind:value="areaname">
-                  {{areaname}}
-                </option>
-              </select>
-            </p>
-            <v-text-field
-              name="amount"
-              label="Refundable Amount"
-              id="amount"
-              v-model="amount"
-            ></v-text-field>
-            <v-text-field
-              name="description"
-              label="Purchase Description"
-              id="description"
-              v-model="description"
-              multi-line
-            ></v-text-field>
-            <v-text-field
-              name="comments"
-              label="Additional Comments"
-              id="comments"
-              v-model="comments"
-              multi-line
-            ></v-text-field>
-            <div>
-              <input id="file-upload-button" type="file" multiple accept="image/*" @change="detectFiles($event.target.files)">
-              <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
-            </div>
-            <v-btn @click="addReceipt">Add Receipt</v-btn>
+            <form>
+              <h2>Add Receipt</h2>
+              <p>Area: 
+                <select v-model="area">
+                  <option v-for="(areaname, path) in areas" :key="path" v-bind:value="areaname">
+                    {{areaname}}
+                  </option>
+                </select>
+              </p>
+              <v-text-field
+                name="amount"
+                label="Refundable Amount"
+                id="amount"
+                v-model="amount"
+                v-validate="'required|decimal:2'"
+              ></v-text-field>
+              <span v-show="errors.has('amount')" class="text-danger">{{ errors.first('amount') }}</span>
+              <v-text-field
+                name="description"
+                label="Purchase Description"
+                id="description"
+                v-model="description"
+                v-validate="'required'"
+                multi-line
+              ></v-text-field>
+              <span v-show="errors.has('description')" class="text-danger">{{ errors.first('description') }}</span>
+              <v-text-field
+                name="comments"
+                label="Additional Comments"
+                id="comments"
+                v-model="comments"
+                multi-line
+              ></v-text-field>
+              <div>
+                <input id="file-upload-button" type="file" multiple 
+                       accept="image/*" @change="detectFiles($event.target.files)"
+                       name="file-upload"
+                       v-validate="'required'">
+                <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
+                <span v-show="errors.has('file-upload')" class="text-danger">{{ errors.first('file-upload') }}</span>
+              </div>
+              <v-btn :disabled="errors.any()" @click="addReceipt">Add Receipt</v-btn>
+            </form>
           </v-flex>
         </v-layout>
 
@@ -125,11 +135,7 @@ export default {
     vm.amount = vm.description = vm.comments = '';
   },
   methods: {
-    addReceipt () {
-      if (!(this.team != '' && this.amount != '' && this.description != '' && this.attachments.length > 0)) {
-        console.log("Not filing empty receipt");
-        return;
-      }
+    post () {
       this.receiptsRef.push({
         area: this.area,
         amount: this.amount,
@@ -140,7 +146,20 @@ export default {
       }).then(() => {
         this.amount = this.description = this.comments = '';
         this.attachments = [];
+        this.progressUpload = 0;
         document.getElementById("file-upload-button").value = null;
+        this.$nextTick(function () {
+          this.$validator.reset();
+          this.errors.clear();
+        });
+      })
+    },
+    addReceipt () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          // eslint-disable-next-line
+          this.post()
+        }
       })
     },
     detectFiles (fileList) {
@@ -185,6 +204,10 @@ export default {
 }
 .progress-bar {
   margin: 10px 0;
+}
+.text-danger {
+  font-weight: bold;
+  color: red;
 }
 </style>
 <!--  -->
