@@ -135,7 +135,8 @@ export default {
         amount: this.amount,
         description: this.description,
         comments: this.comments,
-        attachments: this.attachments
+        attachments: this.attachments,
+        timestamp: Date.now()
       }).then(() => {
         this.team = this.amount = this.description = this.comments = '';
         this.attachments = [];
