@@ -1,5 +1,10 @@
 {
   "rules": {
+    "admin": {
+      "areas": {
+        ".read": true
+      }
+    },
     "users": {
       "$uid": {
         ".read": "$uid === auth.uid",
