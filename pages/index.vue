@@ -3,6 +3,18 @@
     <v-layout text-xs-center>
       <v-flex xs12 md8 offset-md2>
         <div class="wrapper">
+          <div class="intro">
+            <h2>Receipts</h2>
+            <p>Welcome to the receipts-processing site.</p> 
+            <p>To register your expenses you will need to:</p>
+            <p>
+              <ol>
+                <li>Sign in to a Google / GMail account using the sign-in button below</li>
+                <li>Fill out your <nuxt-link to="/profile">Purchasing Profile</nuxt-link></li>
+                <li>Add details of your expenses with the <nuxt-link to="/purchasing/addreceipt">Add Receipt</nuxt-link> form</li>
+              </ol>
+            </p>
+          </div>
           <div v-if="!$store.state.user">
             <login-form></login-form>
             <!-- <v-btn outline large flat nuxt @click="$router.push('/login')" primary>Sign In</v-btn> -->
@@ -13,6 +25,9 @@
               <v-icon>thumb_up</v-icon>
             </v-btn>
           </div>
+        </div>
+        <div>
+          <p>Code for this site is on <a href="https://github.com/codders/kiezburn-purchasing">Github</a> - pull requests welcome!</p>
         </div>
       </v-flex>
     </v-layout>
@@ -51,6 +66,10 @@ components: {
 .title {
   font-size: 2.5em !important;
   /*margin-top: -5em;*/
+}
+div.intro {
+  align-content: left;
+  align-items: left;
 }
 
 @media (min-width: 750px) {
