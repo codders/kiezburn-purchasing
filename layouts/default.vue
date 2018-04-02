@@ -85,10 +85,8 @@ export default {
       fixed: false,
       items: [
         { icon: 'home', title: 'Welcome', to: '/' },
-        { icon: 'info', title: 'About', to: '/about' },
         { icon: 'euro_symbol', title: 'Purchasing', to: '/purchasing' },
         { icon: 'person', title: 'Profile', to: '/profile' },
-        { icon: 'settings', title: 'Admin', to: '/admin' },
       ],
       title: 'KiezBurn 2018 Purchasing',
       menu: false
