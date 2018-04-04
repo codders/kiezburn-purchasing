@@ -6,7 +6,7 @@
         </v-flex>
         <v-flex>
           <div ng-bind-html="trustedHtml" class="ng-binding"><h2>IMPORTANT!! READ FIRST!#</h2>
-          <p>Please read the Kiezburn refund guidelines -  <a href="https://goo.gl/Bu9u7f" target="_blank">HERE</a></p>
+          <p>Please read the Kiezburn refund guidelines -  <a href="https://docs.google.com/document/d/1D_Pf3fg5ynRiYidC0GkXkYE_GxLM6votZ82huVMaPPc" target="_blank">HERE</a></p>
           <p>NOTE: Please don't send us your Amazon order statements, these are not invoices. Here's how to get your Amazon invoices: <a href="https://docs.google.com/document/d/1Ohq6VUl09i7K9tnxk7y2wvxMhMcv4Jut4lCmJSeAOeY/edit?usp=sharing" target="_blank">HERE</a></p>
           <h5>This is <strong>only</strong> for Kiez Burn production expenditures.</h5>
           <p>*If you are an artist or performer wanting to request a refund, please <a href="https://drive.google.com/open?id=1i4wKp5kMHA0-FYjdTktA9FYnUb5HpG9M5bP1MLN7a-4" target="_blank">READ THIS </a> or get in touch with your Kiez Burn Arts &amp; Entertainment contact.</p>
@@ -15,7 +15,7 @@
           <ol>
           <li>You fill out the form below and attach a digital copy of the receipts / invoices.</li>
           <li>The teamlead gets notified and they check that the refund request is in line with agreements.</li>
-          <li><strong>We need the physical receipts for refunds</strong> You can hand them in with your team lead, or bring them to the Kiez Burn event and hand them over to the finance lead (Arthur), either during build office hours (Office hours will be signposted during build), or during the event at the infostand on:<br>
+          <li><strong>We need the physical receipts for refunds</strong> You can hand them in with your team lead, or bring them to the Kiez Burn event and hand them over to the finance lead (Arthur/Thomas), either during build office hours (Office hours will be signposted during build), or during the event at the infostand on:<br>
           Friday: 17-19h or<br>
           Sunday: 13-14h</li>
           <li>The physical receipts will be checked against the refund request and once agreed, you will receive a refund on the account that you have specified in this form.</li>
@@ -41,7 +41,7 @@
           </template>
           <v-flex xs12 md6>
             <form>
-              <h2>Add Receipt</h2>
+              <h2>Add Refund Request</h2>
               <p>Area: 
                 <select v-model="area">
                   <option v-for="(areaname, path) in areas" :key="path" v-bind:value="areaname">
@@ -74,6 +74,15 @@
                 multi-line
               ></v-text-field>
               <div>
+                <p>Add Receipt File(s)</p>
+
+                <v-list>
+                  <v-list-tile v-for="(attachment, key) in attachments" :key="key">
+                    <p><a :href="attachment.downloadURL">Receipt File {{key + 1}}</a></p>
+                    <v-spacer></v-spacer>
+                  </v-list-tile>
+                </v-list>
+
                 <input id="file-upload-button" type="file" multiple 
                        accept="image/*" @change="detectFiles($event.target.files)"
                        name="file-upload"
@@ -81,7 +90,7 @@
                 <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
                 <span v-show="errors.has('file-upload')" class="text-danger">{{ errors.first('file-upload') }}</span>
               </div>
-              <v-btn :disabled="errors.any()" @click="addReceipt">Add Receipt</v-btn>
+              <v-btn :disabled="errors.any()" @click="addReceipt">Submit Refund Request</v-btn>
             </form>
           </v-flex>
         </v-layout>
@@ -189,6 +198,7 @@ export default {
 </script>
 
 <style>
+
 #purchasingNav {
   display: flex;
   flex-flow: row wrap;

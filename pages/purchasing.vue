@@ -3,7 +3,7 @@
     <h1 class="title">Purchasing Dashboard</h1>
     <h2 class="subheading">Manage your purchases and receipts here</h2>
     <v-flex xs12 id="purchaseNav">
-      <nuxt-link class="purchaseNavRoute" to="/purchasing/addreceipt">Add Receipt</nuxt-link>
+      <nuxt-link class="purchaseNavRoute" to="/purchasing/addrefundrequest">Add Refund Request</nuxt-link>
       <nuxt-link class="purchaseNavRoute" to="/purchasing">Show Receipts</nuxt-link>
     </v-flex>
     <v-divider></v-divider>

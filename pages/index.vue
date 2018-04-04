@@ -4,14 +4,14 @@
       <v-flex xs12 md8 offset-md2>
         <div class="wrapper">
           <div class="intro">
-            <h2>Receipts</h2>
+            <h2>Refund Requests</h2>
             <p>Welcome to the receipts-processing site.</p> 
             <p>To register your expenses you will need to:</p>
             <p>
               <ol>
                 <li>Sign in to a Google / GMail account using the sign-in button below</li>
                 <li>Fill out your <nuxt-link to="/profile">Purchasing Profile</nuxt-link></li>
-                <li>Add details of your expenses with the <nuxt-link to="/purchasing/addreceipt">Add Receipt</nuxt-link> form</li>
+                <li>Add details of your expenses with the <nuxt-link to="/purchasing/addrefundrequest">Add Refund Request</nuxt-link> form</li>
               </ol>
             </p>
           </div>
