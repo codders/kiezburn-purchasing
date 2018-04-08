@@ -6,6 +6,7 @@
           <nuxt-child :key="$router.fullPath"></nuxt-child>
         </v-flex>
         <v-layout row wrap>
+          <form>
           <v-flex xs12 md6>
             <p>Name:
               <v-text-field
@@ -13,7 +14,9 @@
                 label="Enter your name"
                 id="name"
                 v-model="name"
+                v-validate="'required'"
               ></v-text-field>
+              <span v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</span>
             </p>
             <p>
               Default Area:
@@ -30,7 +33,9 @@
                 label="+49 176..."
                 id="number"
                 v-model="number"
+                v-validate="'required'"
               ></v-text-field>
+              <span v-show="errors.has('number')" class="text-danger">{{ errors.first('number') }}</span>
             </p>
             <p>
               E-mail:
@@ -39,7 +44,9 @@
                 label="bob@example.com"
                 id="email"
                 v-model="email"
+                v-validate="'required|email'"
               ></v-text-field>
+              <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
             </p>
             <p>
               Account name:
@@ -48,7 +55,9 @@
                 label="J. Smith"
                 id="accountname"
                 v-model="accountname"
+                v-validate="'required'"
               ></v-text-field>
+              <span v-show="errors.has('accountname')" class="text-danger">{{ errors.first('accountname') }}</span>
             </p>
             <p>
               IBAN:
@@ -57,10 +66,13 @@
                 label="DE43... or GB21... etc."
                 id="iban"
                 v-model="iban"
+                v-validate="'required'"
               ></v-text-field>
+              <span v-show="errors.has('iban')" class="text-danger">{{ errors.first('iban') }}</span>
             </p>
-            <v-btn @click="saveProfile">Save Profile</v-btn>
+            <v-btn :disabled="errors.any()" @click="submitProfile">Save Profile</v-btn>
           </v-flex>
+          </form>
         </v-layout>
 
   </section>
@@ -111,6 +123,14 @@ export default {
     });
   },
   methods: {
+    submitProfile() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          // eslint-disable-next-line
+          this.saveProfile()
+        }
+      })
+    },
     saveProfile () {
       this.profileRef.set({
         name: this.name,
@@ -119,6 +139,8 @@ export default {
         accountname: this.accountname,
         iban: this.iban,
         area: this.area
+      }).then(() => {
+        this.$nuxt.$router.replace({ path: '/purchasing' });
       })
     }
   }
@@ -138,6 +160,10 @@ export default {
 }
 #profileChild {
   margin-top: 1em;
+}
+.text-danger {
+  font-weight: bold;
+  color: red;
 }
 </style>
 <!--  -->
