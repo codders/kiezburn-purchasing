@@ -78,13 +78,13 @@
 
                 <v-list>
                   <v-list-tile v-for="(attachment, key) in attachments" :key="key">
-                    <p><a :href="attachment.downloadURL">Receipt File {{key + 1}}</a></p>
+                    <p><a :href="attachment.downloadURL" target="_blank">Receipt File {{key + 1}}</a></p>
                     <v-spacer></v-spacer>
                   </v-list-tile>
                 </v-list>
 
                 <input id="file-upload-button" type="file" multiple 
-                       accept="image/*" @change="detectFiles($event.target.files)"
+                       accept="image/*,application/pdf" @change="detectFiles($event.target.files)"
                        name="file-upload"
                        v-validate="'required'">
                 <div class="progress-bar" :style="{ width: progressUpload + '%'}">{{ progressUpload }}%</div>
