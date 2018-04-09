@@ -57,7 +57,3 @@ or alternatively
 ```
   npm run fdeploy
 ```
-
-== Setup
-
-
