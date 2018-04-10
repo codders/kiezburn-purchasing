@@ -3,8 +3,8 @@
     <v-layout row wrap>
         <v-flex xs12 md4>
         <h2>{{receipt.description}}</h2>
-        <p>Comment: {{receipt.comment}}</p>
-        <p>Amount: {{receipt.amount}}</p>
+        <p>Comment: {{receipt.comments}}</p>
+        <p>Amount: €{{receipt.amount}}</p>
         <p class="receipt-photo" v-for="(photo, key) in receipt.attachments" :key="key">
           <img :src="`${photo.downloadURL}`">
           <v-spacer></v-spacer>
