@@ -13,7 +13,7 @@
                 name="name"
                 label="Enter your name"
                 id="name"
-                v-model="name"
+                v-model.trim="name"
                 v-validate="'required'"
               ></v-text-field>
               <span v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</span>
@@ -32,7 +32,7 @@
                 name="number"
                 label="+49 176..."
                 id="number"
-                v-model="number"
+                v-model.trim="number"
                 v-validate="'required'"
               ></v-text-field>
               <span v-show="errors.has('number')" class="text-danger">{{ errors.first('number') }}</span>
@@ -43,7 +43,7 @@
                 name="email"
                 label="bob@example.com"
                 id="email"
-                v-model="email"
+                v-model.trim="email"
                 v-validate="'required|email'"
               ></v-text-field>
               <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
@@ -54,7 +54,7 @@
                 name="accountname"
                 label="J. Smith"
                 id="accountname"
-                v-model="accountname"
+                v-model.trim="accountname"
                 v-validate="'required'"
               ></v-text-field>
               <span v-show="errors.has('accountname')" class="text-danger">{{ errors.first('accountname') }}</span>
@@ -65,7 +65,7 @@
                 name="iban"
                 label="DE43... or GB21... etc."
                 id="iban"
-                v-model="iban"
+                v-model.trim="iban"
                 v-validate="'required'"
               ></v-text-field>
               <span v-show="errors.has('iban')" class="text-danger">{{ errors.first('iban') }}</span>
