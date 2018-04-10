@@ -51,7 +51,7 @@
               </p>
               <v-text-field
                 name="amount"
-                label="Refundable Amount"
+                label="Refundable Amount in Euros e.g. '12.34' (but not '€12,34')"
                 id="amount"
                 v-model="amount"
                 v-validate="'required|decimal:2'"

@@ -8,7 +8,7 @@
             <v-list-tile v-for="(receipt, key) in receipts" :key="key">
               <nuxt-link :to="'/purchasing/receipts/' + key"><v-list-tile-title>{{receipt.description}}</v-list-tile-title></nuxt-link>
               <v-spacer></v-spacer>
-              <v-list-tile-title>{{receipt.amount}}</v-list-tile-title>
+              <v-list-tile-title>&nbsp;€{{receipt.amount}}</v-list-tile-title>
               <v-spacer></v-spacer>
               <v-list-tile-action @click="deleteReceipt(key)">
                 <v-btn icon><v-icon>delete</v-icon></v-btn>
