@@ -16,7 +16,7 @@
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.2",
     "firebase": "^4.5.0",
-    "firebase-tools": "^3.17.1",
+    "firebase-tools": "^3.18.4",
     "nuxt": "^1.0.0",
     "nuxt-validate": "^0.1.1",
     "vuetify": "^0.15.7"
