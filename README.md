@@ -6,7 +6,7 @@
 
 You will need to install node (~> 8.0) to run and develop with nuxt.
 
-You will also need to configure a new Firebase project to host and run this application if you have not already done so. Create a project with Google Firebase, and copy the config details for the Web application to the config section of `services/firebase.js`
+You will also need to configure a new Firebase project to host and run this application if you have not already done so. Create a project with Google Firebase, and copy the config details for the Web application to the config section of `services/fireinit.js`
 
 Enable Google Auth in the Firebase Dev Authentication Console to permit users to login with their Google accounts. You will also need to enable Storage and Hosting for the application, so that we can store receipts and host the app in the cloud.
 
