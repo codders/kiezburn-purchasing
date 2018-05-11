@@ -114,12 +114,14 @@ export default {
     });
     vm.profileRef.on('value', function(snapshot) {
       vm.profile = snapshot.val();
-      vm.name = vm.profile['name'];
-      vm.number = vm.profile['number'];
-      vm.email = vm.profile['email'];
-      vm.accountname = vm.profile['accountname'];
-      vm.iban = vm.profile['iban'];
-      vm.area = vm.profile['area'];
+      if (vm.profile != null) {
+        vm.name = vm.profile['name'];
+        vm.number = vm.profile['number'];
+        vm.email = vm.profile['email'];
+        vm.accountname = vm.profile['accountname'];
+        vm.iban = vm.profile['iban'];
+        vm.area = vm.profile['area'];
+      }
     });
   },
   methods: {
