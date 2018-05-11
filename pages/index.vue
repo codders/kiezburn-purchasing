@@ -4,8 +4,8 @@
       <v-flex xs12 md8 offset-md2>
         <div class="wrapper">
           <div class="intro">
-            <h2>Refund Requests</h2>
-            <p>Welcome to the receipts-processing site.</p> 
+            <h2>Art Grant Refund Requests</h2>
+            <p>Welcome to the Art Grants receipts-processing site.</p> 
             <p>To register your expenses you will need to:</p>
             <p>
               <ol>

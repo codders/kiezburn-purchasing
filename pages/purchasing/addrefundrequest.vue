@@ -5,23 +5,18 @@
           <nuxt-child :key="$router.fullPath"></nuxt-child>
         </v-flex>
         <v-flex>
-          <div ng-bind-html="trustedHtml" class="ng-binding"><h2>IMPORTANT!! READ FIRST!#</h2>
-          <p>Please read the Kiezburn refund guidelines -  <a href="https://docs.google.com/document/d/1D_Pf3fg5ynRiYidC0GkXkYE_GxLM6votZ82huVMaPPc" target="_blank">HERE</a></p>
-          <p>NOTE: Please don't send us your Amazon order statements, these are not invoices. Here's how to get your Amazon invoices: <a href="https://docs.google.com/document/d/1Ohq6VUl09i7K9tnxk7y2wvxMhMcv4Jut4lCmJSeAOeY/edit?usp=sharing" target="_blank">HERE</a></p>
-          <h5>This is <strong>only</strong> for Kiez Burn production expenditures.</h5>
-          <p>*If you are an artist or performer wanting to request a refund, please <a href="https://drive.google.com/open?id=1i4wKp5kMHA0-FYjdTktA9FYnUb5HpG9M5bP1MLN7a-4" target="_blank">READ THIS </a> or get in touch with your Kiez Burn Arts &amp; Entertainment contact.</p>
-          <p>Please fill out the form below to get a refund for expenditures made for Kiez Burn. </p>
+          <div ng-bind-html="trustedHtml" class="ng-binding"><h2>IMPORTANT ARTIST INFO!!!! READ FIRST!!!!</h2>
+          <p>Please read the Art Grant refund guidelines -  <a href="https://docs.google.com/document/d/12vNr72R7WmiwWDG54ntO7FGaHVoZV5jFfFRhQYOBCbQ" target="_blank">HERE</a></p>
+          <p>NOTE: Please don't send us your Amazon order statements, these are not invoices.</p>
+          <h5>THIS IS ONLY FOR KIEZ BURN ART GRANT REFUNDS</h5>
           <p><strong>The process is as follows:</strong></p>
           <ol>
-          <li>You fill out the form below and attach a digital copy of the receipts / invoices.</li>
-          <li>The teamlead gets notified and they check that the refund request is in line with agreements.</li>
-          <li><strong>We need the physical receipts for refunds</strong> You can hand them in with your team lead, or bring them to the Kiez Burn event and hand them over to the finance lead (Arthur/Thomas), either during build office hours (Office hours will be signposted during build), or during the event at the infostand on:<br>
-          Friday: 17-19h or<br>
-          Sunday: 13-14h</li>
-          <li>The physical receipts will be checked against the refund request and once agreed, you will receive a refund on the account that you have specified in this form.</li>
-          <li><strong>WE NEED THE PHYSICAL RECEIPTS!!!</strong></li>
+          <li>You fill out the form below and attach a digital copy of the receipt/invoices (which all have your name and art project written on them)</li>
+          <li>The Art Grants Team will be notified and check that the refund request is in line with your Art Grant Agreement</li>
+          <li><strong>We need the physical copy of your receipt.</strong> Put them into an envelope and hand them to a member of the Art Grants Team (Olivia, Gini, Remy).</li>
+          <li>The physical receipts will be checked against that amount granted, and amount requested, then the money will be transferred into the account you specified in this form.</li>
           </ol>
-          <p><strong>Thank you for helping us make this event beautiful and a reality</strong></p></div>
+          </div>
         </v-flex>
         <v-layout row wrap>
           <template v-if="receipts != null && receipts.size > 0">

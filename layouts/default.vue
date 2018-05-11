@@ -88,7 +88,7 @@ export default {
         { icon: 'euro_symbol', title: 'Purchasing', to: '/purchasing' },
         { icon: 'person', title: 'Profile', to: '/profile' },
       ],
-      title: 'KiezBurn 2018 Purchasing',
+      title: 'KiezBurn 2018 Art Grant Refunds',
       menu: false
     }
   },
