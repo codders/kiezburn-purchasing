@@ -72,7 +72,7 @@
      </v-container>
    </main>
     <v-footer :fixed="fixed" app>
-      <span>&copy; Kiez Burn 2018</span>
+      <span>&copy; Kiez Burn 2019</span>
     </v-footer>
   </v-app>
 </template>
@@ -88,7 +88,7 @@ export default {
         { icon: 'euro_symbol', title: 'Purchasing', to: '/purchasing' },
         { icon: 'person', title: 'Profile', to: '/profile' },
       ],
-      title: 'KiezBurn 2018 Purchasing',
+      title: 'KiezBurn 2019 Purchasing',
       menu: false
     }
   },

@@ -9,17 +9,16 @@
           <p>Please read the Kiezburn refund guidelines -  <a href="https://sites.google.com/view/kiezburnleads/refund" target="_blank">HERE</a></p>
           <p>NOTE: Please don't send us your Amazon order statements, these are not invoices. Here's how to get your Amazon invoices: <a href="https://docs.google.com/document/d/1Ohq6VUl09i7K9tnxk7y2wvxMhMcv4Jut4lCmJSeAOeY/edit?usp=sharing" target="_blank">HERE</a></p>
           <h5>This is <strong>only</strong> for Kiez Burn production expenditures.</h5>
-          <p>*If you are an artist or performer wanting to request a refund, please <a href="https://drive.google.com/open?id=1i4wKp5kMHA0-FYjdTktA9FYnUb5HpG9M5bP1MLN7a-4" target="_blank">READ THIS </a> or get in touch with your Kiez Burn Arts &amp; Entertainment contact.</p>
+          <p>*If you have a dream and want to request a refund, please <a href="https://drive.google.com/open?id=1i4wKp5kMHA0-FYjdTktA9FYnUb5HpG9M5bP1MLN7a-4" target="_blank">READ THIS </a> or get in touch with your Dream Guide.</p>
           <p>Please fill out the form below to get a refund for expenditures made for Kiez Burn. </p>
           <p><strong>The process is as follows:</strong></p>
           <ol>
           <li>You fill out the form below and attach a digital copy of the receipts / invoices.</li>
-          <li>The teamlead gets notified and they check that the refund request is in line with agreements.</li>
-          <li><strong>We need the physical receipts for refunds</strong> You can hand them in with your team lead, or bring them to the Kiez Burn event and hand them over to the finance lead (Arthur/Thomas), either during build office hours (14h-17h), or during the event at the infostand on:<br>
-          Friday: 17-19h or<br>
-          Sunday: 13-14h</li>
+          <li>The Finance Leads get notified and they check that the refund request is in line with agreements.</li>
+          <li><strong>We need the physical receipts for refunds.</strong> Please keep them very well organized, this means we would like all receipts to be photocopied and attached to the photocopy, with a summary page on the top, and all contained within a plastic folder or envelope. If you cannot normally do so for any reason, please get and organized person to support you. Handing in a pile of illegible and disorganized receipts lowers your chances of getting a full and timely refund. IT IS IN YOUR BEST INTEREST TO ENSURE YOUR RECEIPTS AND COSTS ARE WELL DOCUMENTED, WE ARE VOLUNTEERS AND CANNOT BEND OVER BACKWARDS TO ENSURE YOU GET PAID<br>
+          <li>You can bring them to the Kiez Burn event and hand them over to the finance leads (Alex/Nadja), who will be based at Flow Camp (by the eastern lake). Please be sure to make some kind of record of your handing over the receipts, as this ensures you will get your refund in time, ESPECIALLY if you do not hand it directly into the hands of the finance leads.</li>
           <li>The physical receipts will be checked against the refund request and once agreed, you will receive a refund on the account that you have specified in this form.</li>
-          <li><strong>WE NEED THE PHYSICAL RECEIPTS!!!</strong> - Send them to Thomas Schneider, Schudomastraße 49, 12055 Berlin if you can't visit us during office hours</li>
+          <li><strong>WE NEED THE PHYSICAL RECEIPTS!!!</strong> - Send them to Nadja Fuhrman, Hübnerstr. 9, 10247. Berlin. if you can't visit us during our office hours. Please write your Area/Dream Name and Your Name on the back of the envelope</li>
           </ol>
           <p><strong>Thank you for helping us make this event beautiful and a reality</strong></p></div>
         </v-flex>
