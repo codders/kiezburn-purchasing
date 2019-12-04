@@ -12,7 +12,7 @@ Enable Google Auth in the Firebase Dev Authentication Console to permit users to
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 
@@ -33,27 +33,27 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 
 Login to firebase with
 
-```
-  firebase login
+```bash
+npx firebase login
 ```
 
 and initialise the project with
 
-```
-  firebase init
+```bash
+npx firebase init
 ```
 
-You will want to enable the database, storage and hosting modules. There will be a lot of questions, but the defaults are fine here, except that you should set the *public* folder to 'dist'.
+You will want to enable the database, storage and hosting modules. There will be a lot of questions, but the defaults are fine here, except that you should set the _public_ folder to 'dist'.
 
 You can then deploy your site with
 
-```
-  npm run build
-  firebase deploy
+```bash
+npm run build
+npx firebase deploy
 ```
 
 or alternatively
 
-```
-  npm run fdeploy
+```bash
+npm run fdeploy
 ```
