@@ -5,7 +5,7 @@
         <div class="wrapper">
           <div class="intro">
             <h2>Refund Requests</h2>
-            <p>Welcome to the receipts-processing site.</p> 
+            <p>Welcome to the receipts-processing site.</p>
             <p>To register your expenses you will need to:</p>
             <p>
               <ol>

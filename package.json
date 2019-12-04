@@ -14,20 +14,23 @@
     "fdeploy": "npm run build && firebase deploy"
   },
   "dependencies": {
-    "@nuxtjs/pwa": "^2.0.2",
-    "firebase": "^4.5.0",
-    "firebase-tools": "^5.1.1",
-    "nuxt": "^1.0.0",
-    "nuxt-validate": "^0.1.1",
-    "vuetify": "^0.15.7"
+    "@nuxtjs/pwa": "^2.6.0",
+    "firebase": "^7.5.0",
+    "firebase-tools": "^7.8.1",
+    "nuxt": "^2.10.2",
+    "nuxt-validate": "^1.0.1",
+    "vuetify": "^2.1.13"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1"
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-vue": "^6.0.1",
+    "node-sass": "^4.13.0",
+    "npm-check-updates": "^3.2.2",
+    "sass-loader": "^8.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
   }
 }
