@@ -13,3 +13,7 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+# Firebase build stuff
+.firebase
+static/sw.js
