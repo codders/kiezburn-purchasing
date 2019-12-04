@@ -1,3 +1,5 @@
+const colors = require('vuetify/es5/util/colors').default
+
 module.exports = {
   /*
   ** Headers of the page
@@ -50,11 +52,32 @@ module.exports = {
     '@nuxtjs/pwa',
     'nuxt-validate'
   ],
+    /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
+ vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.blue.base,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
   router: {
     middleware: 'router-auth'
   },
   css: [
     { src: '~/assets/css/main.css', lang: 'css'},
-    { src: '~/assets/css/app.styl', lang: 'styl'}
+    { src: '~/assets/variables.scss', lang: 'scss'}
   ]
 }
