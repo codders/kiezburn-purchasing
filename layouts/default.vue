@@ -88,7 +88,7 @@ export default {
         { icon: 'euro_symbol', title: 'Purchasing', to: '/purchasing' },
         { icon: 'person', title: 'Profile', to: '/profile' },
       ],
-      title: 'KiezBurn 2019 Purchasing',
+      title: 'KiezBurn 2020 Purchasing',
       menu: false
     }
   },
